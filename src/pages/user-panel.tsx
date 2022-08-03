@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import { useAppDispatch } from '../redux/hooks'
 import { filterWholesalersAsync} from '../redux/slices/wholesalers'
 import List from '../components/wholesaler-list'
+import Filter from '../components/wholesaler-filter'
+import Paginate from '../components/wholesaler-paginate'
 
 const Container = styled.div`
   display: flex;
@@ -28,6 +30,12 @@ const Aside = styled.aside`
 const Main = styled.main`
   flex: 0 0 86%;
   margin: 0 40px 0 160px;
+  display: grid;
+  grid-template-areas: 
+    "options options"
+    "filter list"
+    "filter paginate"
+  ;
 `
 
 const PanelUser = () => {
@@ -47,8 +55,10 @@ const PanelUser = () => {
         </ItemAside>
       </Aside>
       <Main>
-        <WholesalerListOptions/>
-        <List/>
+        <WholesalerListOptions style={{gridArea: 'options'}}/>
+        <Filter style={{gridArea: 'filter'}}/>
+        <List style={{gridArea: 'list'}}/>
+        <Paginate style={{gridArea: 'paginate'}}/>
       </Main>
     </Container>
   )

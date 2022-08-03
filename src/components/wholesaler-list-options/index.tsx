@@ -3,7 +3,12 @@ import styled from 'styled-components'
 import Select from './select'
 import {BiSortAlt2} from 'react-icons/bi'
 import {itemOptionsPerPage, sortOptions} from './utils'
-import { filterWholesalersAsync, selectCountWholesaler, setOptionItemPerPage, setOptionSortBy } from '../../redux/slices/wholesalers'
+import { filterWholesalersAsync,
+    selectPages,
+    selectTotalPages,
+    selectTotalWholesaler, 
+    setOptionItemPerPage, 
+    setOptionSortBy } from '../../redux/slices/wholesalers'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 
 const Container = styled.div`
@@ -43,9 +48,16 @@ const TextContainer = styled.div`
     align-items: center;
 `
 
-const App = ():JSX.Element => {
+interface params {
+    style?: React.CSSProperties;
+}
+
+const App = (params:params):JSX.Element => {
+
     const dispatch = useAppDispatch()
-    const count = useAppSelector(selectCountWholesaler)
+    const total = useAppSelector(selectTotalWholesaler)
+    const page = useAppSelector(selectPages)
+
 
     const handleChangeSort = (value: string) => { 
         dispatch(setOptionSortBy(value))        
@@ -58,9 +70,9 @@ const App = ():JSX.Element => {
     }
 
     return (
-        <Container>
+        <Container style={params.style}>
             <ResultText>
-                {count} Resultados Encontrados    
+            {total} Resultados Encontrados - Páginas {`${page.currentPage} / ${page.totalPage}`}
             </ResultText>
             <OptionsContainer>
                 <TextContainer>

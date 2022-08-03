@@ -15,12 +15,13 @@ export const Card = styled.main`
   border: 1px solid rgba(0, 0, 0, 0.125);
 `;
 
+//background-color: var(--color9);
 export const CardFilters = styled.main`
   max-width: 300px;
   box-shadow: 0 4px 4px #5e738e80;
   padding: 10px;
   border-radius: 4px;
-  background-color: var(--color9);
+  background-color: #fff;
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
@@ -71,6 +72,9 @@ export const Button = styled.button`
   cursor: pointer;
   &:hover {
     background-color: var(--color2);
+  }
+  &:disabled {
+    background-color: Var(--color8)
   }
 `;
 

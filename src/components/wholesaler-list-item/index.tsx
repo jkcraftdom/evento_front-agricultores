@@ -1,7 +1,6 @@
 import "./itemWholesalerStyles.css";
 
 interface items{
-    id:number, 
     image:string,
     name:string,
     country:string,
@@ -25,8 +24,8 @@ function ItemWholesaler(itemsObj:items) {
             <p className="card-description">{itemsObj.description}</p>
             <p className="card-secondary-container-badges">
                 {
-                    itemsObj.products.map(product =>(
-                        <span className="card-secondary-badge">{product}</span>
+                    itemsObj.products.map((product,i) =>(
+                        <span key={i} className="card-secondary-badge">{product}</span>
                     ))
                 }
             </p>

@@ -5,9 +5,7 @@ export const createParameters = (data: object) : string => {
     let parameters: string = "";
 
     (Object.keys(data) as (keyof typeof data)[]).forEach( (value) => {
-        //let firstTwoLetters:string = String(value).substring(0, 2)
-        //parameters += `&${firstTwoLetters}=${data[value]}`
-        if(data[value] !== undefined)
+        if(data[value] !== undefined && data[value] !== '')
             parameters += `&${value}=${data[value]}`
 
     })  
